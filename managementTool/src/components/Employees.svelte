@@ -51,10 +51,4 @@
         </tbody>
       </table>
     </div>
-
-    <h2 class="text-3xl font-bold underline">Upcoming 1:1s</h2>
-    <p>Below you will find a list of your 1:1s coming up in the next 2 weeks</p>
-
-    <h2 class="text-3xl font-bold underline">Upcoming Reviews</h2>
-    <p>Below you will find a list of your reviews coming up in the next 2 weeks</p>
 </div>
