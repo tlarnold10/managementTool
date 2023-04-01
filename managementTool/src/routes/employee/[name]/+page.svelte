@@ -21,14 +21,18 @@
             </div>
         </details>
 
-        <!-- The Second FAQ -->
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
             <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Goals</summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
-                    {#if data.currentEmployee?.goals.length > 0}
-                        {#each data.currentEmployee?.goals as goal, index}
-                        <li>{goal.description}</li>
+                    {#if data.currentEmployee?.goals?.length > 0 && data.currentEmployee?.goals?.length !== undefined}
+                        {#each data.currentEmployee.goals as goal, index}
+                        <li>
+                            <h1>{goal.title}</h1>
+                            <p><em>{goal.description}</em></p>
+                            <p>Due: <strong>{formatDate(goal.dueDate)}</strong></p>
+                        </li>
+                        <br>
                         {/each}
                     {:else}
                         <li>NA</li>
@@ -37,12 +41,11 @@
             </div>
         </details>
 
-        <!-- The Third FAQ -->
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
             <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews</summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
-                    {#if data.currentEmployee?.employeeReviews.length > 0}
+                    {#if data.currentEmployee?.employeeReviews.length > 0 && data.currentEmployee?.employeeReviews?.length !== undefined}
                         {#each data.currentEmployee?.employeeReviews as reviews, index}
                         <li>{reviews.employeeReviewFeedback} <br>---- on <strong>{formatDate(reviews.reviewDate)}</strong></li>
                         {/each}
@@ -53,12 +56,11 @@
             </div>
         </details>
 
-        <!-- The Third FAQ -->
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
             <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Feedback</summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
-                    {#if data.currentEmployee?.employeeFeedback.length > 0}
+                    {#if data.currentEmployee?.employeeFeedback.length > 0 && data.currentEmployee?.employeeFeedback?.length !== undefined}
                         {#each data.currentEmployee?.employeeFeedback as feedback, index}
                         <li>{feedback.feedbackContent}</li>
                         {/each}

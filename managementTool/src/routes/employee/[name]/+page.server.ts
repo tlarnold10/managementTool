@@ -1,9 +1,11 @@
 import type { EmployeeModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/employee.model";
 import type { FeedbackModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/feedback.model";
 import type { EmployeeReviewModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/review.model";
+import type { GoalModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/goal.model";
 import employees from '../../../../static/mock-data/mockEmployees.json';
 import feedback from '../../../../static/mock-data/mockFeedback.json';
 import reviews from '../../../../static/mock-data/mockReview.json';
+import goals from '../../../../static/mock-data/mockGoals.json';
 
 var currentEmployee: EmployeeModel | undefined = {
     name: "Trevor",
@@ -15,6 +17,7 @@ export async function load({params}) {
     var allEmployees: EmployeeModel[] = [];
     var allFeedback: FeedbackModel[] = [];
     var allReviews: EmployeeReviewModel[] = [];
+    var allGoals: GoalModel[] = [];
     feedback.forEach(item => {
         var tempFeedback: FeedbackModel = {
             name: item.name,
@@ -22,6 +25,16 @@ export async function load({params}) {
             feedbackContent: item.feedbackContent
         };
         allFeedback.push(tempFeedback);
+    });
+
+    goals.forEach(item => {
+        var tempGoal: GoalModel = {
+            name: item.name,
+            title: item.title,
+            description: item.description,
+            dueDate: new Date(item.dueDate)
+        };
+        allGoals.push(tempGoal);
     });
 
     reviews.forEach(item => {
@@ -50,6 +63,11 @@ export async function load({params}) {
         allReviews.forEach((element: EmployeeReviewModel) => {
             if (element.name == tempEmployee.name && tempEmployee.employeeReviews !== undefined) {
                 tempEmployee.employeeReviews.push(element);
+            }
+        });
+        allGoals.forEach((element: GoalModel) => {
+            if (element.name == tempEmployee.name && tempEmployee.goals !== undefined) {
+                tempEmployee.goals.push(element);
             }
         });
         allEmployees.push(tempEmployee);
