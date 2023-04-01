@@ -13,9 +13,6 @@
         currentManager = data;
     })
 
-    function _populateManagerData() {
-        
-    }
 </script>
 
 <style>
