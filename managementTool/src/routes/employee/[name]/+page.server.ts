@@ -2,10 +2,13 @@ import type { EmployeeModel } from "../../../../../../../managementTool/manageme
 import type { FeedbackModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/feedback.model";
 import type { EmployeeReviewModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/review.model";
 import type { GoalModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/goal.model";
+import type { OneOnOneModel } from "../../../../../../../managementTool/managementTool/managementTool/src/models/one-on-one.model";
 import employees from '../../../../static/mock-data/mockEmployees.json';
 import feedback from '../../../../static/mock-data/mockFeedback.json';
 import reviews from '../../../../static/mock-data/mockReview.json';
 import goals from '../../../../static/mock-data/mockGoals.json';
+import notes from '../../../../static/mock-data/mockOneonOne.json';
+
 
 var currentEmployee: EmployeeModel | undefined = {
     name: "Trevor",
@@ -18,6 +21,7 @@ export async function load({params}) {
     var allFeedback: FeedbackModel[] = [];
     var allReviews: EmployeeReviewModel[] = [];
     var allGoals: GoalModel[] = [];
+    var allNotes: OneOnOneModel[] = [];
     feedback.forEach(item => {
         var tempFeedback: FeedbackModel = {
             name: item.name,
@@ -46,6 +50,15 @@ export async function load({params}) {
         allReviews.push(tempReview);
     });
 
+    notes.forEach(item => {
+        var tempNotes: OneOnOneModel = {
+            name: item.name,
+            meetingDate: new Date(item.meetingDate),
+            notes: item.notes
+        };
+        allNotes.push(tempNotes);
+    });
+
     employees.forEach((item) => {
         var tempEmployee: EmployeeModel = {
             name: item.name,
@@ -68,6 +81,11 @@ export async function load({params}) {
         allGoals.forEach((element: GoalModel) => {
             if (element.name == tempEmployee.name && tempEmployee.goals !== undefined) {
                 tempEmployee.goals.push(element);
+            }
+        });
+        allNotes.forEach((element: OneOnOneModel) => {
+            if (element.name == tempEmployee.name && tempEmployee.oneOnOnes !== undefined) {
+                tempEmployee.oneOnOnes.push(element);
             }
         });
         allEmployees.push(tempEmployee);
