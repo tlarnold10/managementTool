@@ -15,14 +15,14 @@
     <div class="mx-auto my-20 drop-shadow rounded-md">
         <!-- The First FAQ -->
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Position</summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Position<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <p>{data.currentEmployee?.position}</p>
             </div>
         </details>
 
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Goals</summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Goals<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
                     {#if data.currentEmployee?.goals?.length > 0 && data.currentEmployee?.goals?.length !== undefined}
@@ -42,7 +42,7 @@
         </details>
 
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews</summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
                     {#if data.currentEmployee?.employeeReviews.length > 0 && data.currentEmployee?.employeeReviews?.length !== undefined}
@@ -57,7 +57,7 @@
         </details>
 
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Feedback</summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Feedback<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
                     {#if data.currentEmployee?.employeeFeedback.length > 0 && data.currentEmployee?.employeeFeedback?.length !== undefined}
@@ -70,5 +70,28 @@
                 </ol>
             </div>
         </details>
+
+        <details class="bg-gray-300 open:bg-amber-200 duration-300">
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">One on One Notes <button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
+            <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
+                <ol>
+                    {#if data.currentEmployee?.oneOnOnes.length > 0 && data.currentEmployee?.oneOnOnes?.length !== undefined}
+                        {#each data.currentEmployee?.oneOnOnes as meeting, index}
+                        <li>
+                            {formatDate(meeting.meetingDate)} Meeting
+                            <ul>
+                                {#each meeting.notes as note, index}
+                                <li>{note}</li>
+                                {/each}
+                            </ul>
+                        </li>
+                        {/each}
+                    {:else}
+                        <li>NA</li>
+                    {/if}
+                </ol>
+            </div>
+        </details>
     </div>
+
 </div>
