@@ -19,3 +19,11 @@
 #meetingNoteModal.active {
     display: block;
 }
+
+#feedbackModal {
+    display: none;
+}
+
+#feedbackModal.active {
+    display: block;
+}
