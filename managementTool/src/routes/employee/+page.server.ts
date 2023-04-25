@@ -1,4 +1,4 @@
-import type { EmployeeModel } from "../../../../../../managementTool/managementTool/managementTool/src/models/employee.model";
+import type { EmployeeModel } from "../../models/employee.model";
 import employees from '../../../static/mock-data/mockEmployees.json';
 
 export async function load({params}) {
