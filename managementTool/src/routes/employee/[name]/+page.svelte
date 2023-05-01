@@ -29,7 +29,7 @@
         type: ''
     };
     $: newFeedback;
-    $: if (newFeedback.name !== '' && _currentEmployee !== undefined && _currentEmployee.employeeFeedback !== undefined) {
+    $: if (newFeedback.name !== '' && newFeedback.feedbackContent !== '' && _currentEmployee !== undefined && _currentEmployee.employeeFeedback !== undefined) {
         _currentEmployee.employeeFeedback = [..._currentEmployee.employeeFeedback, newFeedback];
     }
 
