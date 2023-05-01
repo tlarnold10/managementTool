@@ -23,8 +23,10 @@
     }
 
     function onSubmit(e: any) {
-        newNote = [...newNote, e.target[0].value];
-        console.log(newNote);
+        console.log("help")
+        if (e.target[0].value !== '') {
+            newNote = [...newNote, e.target[0].value];
+        }
         modal?.classList.remove('active');
     }
 
@@ -41,15 +43,16 @@
 			<!--Body-->
             <form on:submit|preventDefault={onSubmit}>
 			<div class="my-5">
-                <label>
-                    Notes: 
-                    <input name="notes"/>
-                </label>
+                <label for="notesArea">1:1 Notes: </label>
+                <textarea class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                id="notesArea"
+                rows="4"
+                placeholder="Your message"></textarea>
 			</div>
 			<!--Footer-->
 			<div class="flex justify-end pt-2">
 				<button
-					class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300" on:click={closeModal}>Cancel</button>
+					class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300" on:click={closeModal} type="reset">Cancel</button>
 				<button
 					class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-white hover:bg-teal-400" type="submit">Confirm</button>
 			</div>
