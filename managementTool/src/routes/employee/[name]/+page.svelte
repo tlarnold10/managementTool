@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { current_component, each, onMount } from 'svelte/internal';
+    import { current_component, each, onMount, setContext } from 'svelte/internal';
     import CreateFeedback from '../../../components/modals/CreateFeedback.component.svelte';
     import CreateNotes from '../../../components/modals/CreateNotes.component.svelte';
     import type { EmployeeModel } from '../../../models/employee.model';
@@ -71,7 +71,7 @@
         </details>
 
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews<a href="/employee/{_currentEmployee?.name}/review"><button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></a></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
                 <ol>
                     {#if _currentEmployee?.employeeReviews?.length !== undefined && _currentEmployee?.employeeReviews.length > 0}
