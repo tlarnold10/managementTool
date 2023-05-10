@@ -10,8 +10,6 @@
     var _currentEmployee: EmployeeModel | undefined = data.currentEmployee;
     let createNoteComponent: any;
     let createFeedbackComponent: any;
-    setContext('currentEmployee', _currentEmployee);
-    setContext('hello', "hello world");
 
     let newNote: any = [];
     let tempOneOnOne: OneOnOneModel;
