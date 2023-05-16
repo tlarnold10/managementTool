@@ -2,23 +2,27 @@
     "name": "Trevor Arnold", 
     "employees": [
         {
-            "name": "Billy",
+            "name": "Simon",
             "position": "PM"
         },
         {
-            "name": "Bob",
+            "name": "John",
             "position": "Developer"
         },
         {
-            "name": "Sam",
+            "name": "Lazarus",
             "position": "Accountant"
         },
         {
-            "name": "Seth",
+            "name": "Mary",
             "position": "Banker"
         },
         {
-            "name": "Jesse",
+            "name": "Michael",
+            "position": "Economic Development"
+        },
+        {
+            "name": "Judah",
             "position": "Economic Development"
         }
     ]
