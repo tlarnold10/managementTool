@@ -1,6 +1,6 @@
 [
     {
-        "name": "Billy",
+        "name": "Simon",
         "position": "PM",
         "goals": [
             
@@ -13,7 +13,7 @@
         ]
     },
     {
-        "name": "Bob",
+        "name": "John",
         "position": "Developer",
         "goals": [
             
@@ -26,7 +26,7 @@
         ]
     },
     {
-        "name": "Sam",
+        "name": "Lazarus",
         "position": "Accountant",
         "goals": [
             
@@ -39,7 +39,7 @@
         ]
     },
     {
-        "name": "Seth",
+        "name": "Mary",
         "position": "Banker",
         "goals": [
             ""
@@ -52,7 +52,20 @@
         ]
     },
     {
-        "name": "Jesse",
+        "name": "Michael",
+        "position": "Economic Development",
+        "goals": [
+            ""
+        ],
+        "oneOnOnes": [
+
+        ],
+        "employeeReviews": [
+            
+        ]
+    },
+    {
+        "name": "Judah",
         "position": "Economic Development",
         "goals": [
             ""
