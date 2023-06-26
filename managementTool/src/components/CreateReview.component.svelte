@@ -139,7 +139,7 @@ if (_currentEmployee !== undefined && _currentEmployee.employeeReviews !== undef
     <dl class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
     {#each reviews as review}
         <div class="flex flex-col pb-3">
-            <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">{review.reviewDate.toDateString()}</dt>
+            <!-- <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">{review.reviewDate.toDateString()}</dt>-->
             <dd class="text-lg font-semibold details">{review.employeeReviewFeedback}</dd>
         </div>
     {/each}

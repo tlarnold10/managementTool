@@ -7,6 +7,7 @@
     import type { OneOnOneModel } from '../../../models/one-on-one.model';
 
     export let data;
+    console.log(data);
     var _currentEmployee: EmployeeModel | undefined = data.currentEmployee;
     let createNoteComponent: any;
     let createFeedbackComponent: any;
@@ -57,9 +58,9 @@
                     {#if _currentEmployee?.goals?.length !== undefined && _currentEmployee?.goals?.length > 0 }
                         {#each _currentEmployee.goals as goal, index}
                         <li>
-                            <h1>{goal.title}</h1>
-                            <p><em>{goal.description}</em></p>
-                            <p>Due: <strong>{formatDate(goal.dueDate)}</strong></p>
+                            <h1>Goal Title: {goal.title}</h1>
+                            <p><em>Goal Description: {goal.description}</em></p>
+                            <!-- <p>Due: <strong>{formatDate(goal.dueDate)}</strong></p>-->
                         </li>
                         <br>
                         {/each}
@@ -76,7 +77,8 @@
                 <ol>
                     {#if _currentEmployee?.employeeReviews?.length !== undefined && _currentEmployee?.employeeReviews.length > 0}
                         {#each _currentEmployee?.employeeReviews as reviews, index}
-                        <li>{reviews.employeeReviewFeedback} <br>---- on <strong>{formatDate(reviews.reviewDate)}</strong></li>
+                        <!--<li>{reviews.employeeReviewFeedback} <br>---- on <strong>{formatDate(reviews.reviewDate)}</strong></li>-->
+                        <li>{reviews.employeeReviewFeedback}</li>
                         {/each}
                     {:else}
                         <li>NA</li>
@@ -91,7 +93,7 @@
                 <ol class="w-200">
                     {#if _currentEmployee?.employeeFeedback?.length !== undefined && _currentEmployee?.employeeFeedback.length > 0}
                         {#each _currentEmployee?.employeeFeedback as feedback, index}
-                        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">{feedback.type}: {feedback.feedbackContent}</li>
+                        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50"><em>{feedback.type}</em>: {feedback.feedbackContent}</li>
                         {/each}
                     {:else}
                         <li>NA</li>
@@ -107,7 +109,7 @@
                     {#if _currentEmployee?.oneOnOnes?.length !== undefined && _currentEmployee?.oneOnOnes.length > 0}
                         {#each _currentEmployee?.oneOnOnes as meeting, index}
                         <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
-                            {formatDate(meeting.meetingDate)} Meeting
+                            <!-- {formatDate(meeting.meetingDate)} Meeting -->
                             <ul>
                                 {#each meeting.notes as note, index}
                                 <li>{note}</li>

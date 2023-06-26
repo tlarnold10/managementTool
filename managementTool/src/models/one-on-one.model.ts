@@ -1,5 +1,5 @@
 export interface OneOnOneModel {
     name: string,
-    meetingDate: Date,
+    meetingDate?: Date,
     notes: string[]
 }
