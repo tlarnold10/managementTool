@@ -1,6 +1,5 @@
 <script lang="ts">
     import Manager from '../components/Manager.svelte';
-    import type { EmployeeModel } from '../models/employee.model';
 </script>
 
 <h1 class="text-3xl font-bold underline">Management Helper Tool</h1>

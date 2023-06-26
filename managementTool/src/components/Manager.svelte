@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     
     import type { ManagerModel } from '../models/manager.model';
+    import { getManagers } from '../services/data.service';
 
     var currentManager: ManagerModel = {
         name: 'Billy Bob',
@@ -11,7 +12,11 @@
         const response = fetch('./mock-data/mockManager.json');
         const data = await (await response).json();
         currentManager = data;
-    })
+    });
+
+    
+
+    getManagers();
 
     function _populateManagerData() {
         

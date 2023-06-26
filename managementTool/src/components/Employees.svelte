@@ -1,17 +1,23 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { getEmployees } from '../services/data.service';
+    import { mapEmployees } from '../services/mapper.service';
     
     import type { ManagerModel } from '../models/manager.model';
+    import type { EmployeeModel } from '../models/employee.model';
 
     var currentManager: ManagerModel = {
         name: 'Billy Bob',
         employees: []
     };
+
+
+    let employees: EmployeeModel[] = []
+
     onMount(async () => {
-        const response = fetch('./mock-data/mockManager.json');
-        const data = await (await response).json();
-        currentManager = data;
-    })
+        const data = await getEmployees();
+        employees = mapEmployees(data);
+    });
 
 </script>
 
@@ -36,7 +42,7 @@
           </tr>
         </thead>
         <tbody>
-          {#each currentManager.employees as employee, index}
+          {#each employees as employee, index}
             <tr class="border-b dark:border-neutral-500">
                 <td class="whitespace-nowrap px-6 py-4">{employee.name}</td>
                 <td class="whitespace-nowrap px-6 py-4">{employee.position}</td>
