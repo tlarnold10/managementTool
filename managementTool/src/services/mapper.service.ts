@@ -9,6 +9,7 @@ export function mapEmployees(data: any[] | null): EmployeeModel[] {
     if (data !== undefined && data !== null) {
         data.forEach((item) => {
             var employee = {
+                id: item.id,
                 name: item.first_name + " " + item.last_name,
                 position: item.position
             };
@@ -65,14 +66,15 @@ export function mapGoals(data: any[] | null): any[] | null {
 
 export function mapOOONotes(data: any[] | null): any[] | null {
     var OneOnOnes: OneOnOneModel[] = [];
+    var tempNotes: string[] = [];
     if (data !== undefined && data !== null) {
         data.forEach((item) => {
-            var OneOnOne = {
-                name: item.first_name + " " + item.last_name,
-                notes: item.content
-            };
-            OneOnOnes.push(OneOnOne);
+            tempNotes.push(item.content);
         });
     }
+    OneOnOnes.push({
+        name: "",
+        notes: tempNotes
+    });
     return OneOnOnes;
 }

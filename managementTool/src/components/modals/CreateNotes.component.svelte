@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import type { EmployeeModel } from "../../models/employee.model";
+    import { addNotes } from "../../services/data.service";
     
     var modal: any;
     var _currentEmployee: EmployeeModel = {
@@ -23,11 +24,12 @@
     }
 
     function onSubmit(e: any) {
-        console.log("help")
         if (e.target[0].value !== '') {
             newNote = [...newNote, e.target[0].value];
         }
         modal?.classList.remove('active');
+        addNotes(newNote, _currentEmployee)
+            .then((item) => console.log(item));
     }
 
 </script>
