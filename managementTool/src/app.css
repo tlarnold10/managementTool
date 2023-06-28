@@ -27,3 +27,11 @@
 #feedbackModal.active {
     display: block;
 }
+
+#goalModal {
+    display: none;
+}
+
+#goalModal.active {
+    display: block;
+}

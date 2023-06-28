@@ -2,7 +2,6 @@
     import CreateReview from '../../../../components/CreateReview.component.svelte';
     import type { EmployeeModel } from '../../../../models/employee.model';
     export var data: any;
-    console.log(data);
 </script>
 
 <div class="container">

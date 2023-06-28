@@ -2,15 +2,17 @@
     import { current_component, each, onMount, setContext } from 'svelte/internal';
     import CreateFeedback from '../../../components/modals/CreateFeedback.component.svelte';
     import CreateNotes from '../../../components/modals/CreateNotes.component.svelte';
+    import CreateGoal from '../../../components/modals/CreateGoal.component.svelte';
     import type { EmployeeModel } from '../../../models/employee.model';
     import type { FeedbackModel } from '../../../models/feedback.model';
     import type { OneOnOneModel } from '../../../models/one-on-one.model';
+    import type { GoalModel } from '../../../models/goal.model';
 
     export let data;
-    console.log(data);
     var _currentEmployee: EmployeeModel | undefined = data.currentEmployee;
     let createNoteComponent: any;
     let createFeedbackComponent: any;
+    let createGoalComponent: any;
 
     let newNote: any = [];
     let tempOneOnOne: OneOnOneModel;
@@ -34,6 +36,16 @@
         _currentEmployee.employeeFeedback = [..._currentEmployee.employeeFeedback, newFeedback];
     }
 
+    let newGoal: GoalModel = {
+        name: '',
+        title: '',
+        description: ''
+    }
+    $: newGoal;
+    $: if (newGoal.name !== '' && newGoal.title !== '' && _currentEmployee !== undefined && _currentEmployee.goals !== undefined) {
+        _currentEmployee.goals = [..._currentEmployee.goals, newGoal];
+    }
+
     function formatDate(date: Date): string {
         return date.toDateString();
     }
@@ -52,12 +64,12 @@
         </details>
 
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
-            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Goals<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></summary>
+            <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Goals<button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={() => createGoalComponent.showGoalModal(_currentEmployee)} >New</button></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
-                <ol>
+                <ol class="w-200">
                     {#if _currentEmployee?.goals?.length !== undefined && _currentEmployee?.goals?.length > 0 }
                         {#each _currentEmployee.goals as goal, index}
-                        <li>
+                        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">
                             <h1>Goal Title: {goal.title}</h1>
                             <p><em>Goal Description: {goal.description}</em></p>
                             <!-- <p>Due: <strong>{formatDate(goal.dueDate)}</strong></p>-->
@@ -74,11 +86,11 @@
         <details class="bg-gray-300 open:bg-amber-200 duration-300">
             <summary class="bg-inherit px-5 py-3 text-lg cursor-pointer">Employee Reviews<a href="/employee/{_currentEmployee?.name}/review"><button class="new-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New</button></a></summary>
             <div class="bg-white px-5 py-3 border border-gray-300 text-sm font-light">
-                <ol>
+                <ol class="w-200">
                     {#if _currentEmployee?.employeeReviews?.length !== undefined && _currentEmployee?.employeeReviews.length > 0}
                         {#each _currentEmployee?.employeeReviews as reviews, index}
                         <!--<li>{reviews.employeeReviewFeedback} <br>---- on <strong>{formatDate(reviews.reviewDate)}</strong></li>-->
-                        <li>{reviews.employeeReviewFeedback}</li>
+                        <li class="w-full border-b-2 border-neutral-100 border-opacity-100 py-4 dark:border-opacity-50">{reviews.employeeReviewFeedback}</li>
                         {/each}
                     {:else}
                         <li>NA</li>
@@ -126,4 +138,5 @@
     </div>
 	<CreateNotes bind:this={createNoteComponent} bind:newNote/>
 	<CreateFeedback bind:this={createFeedbackComponent} bind:newFeedback/>
+    <CreateGoal bind:this={createGoalComponent} bind:newGoal/>
 </div>

@@ -4,6 +4,7 @@ import type { OneOnOneModel } from './one-on-one.model';
 import type { EmployeeReviewModel } from './review.model';
 
 export interface EmployeeModel {
+    id?: number,
     name: string,
     position?: string,
     goals?: GoalModel[],
